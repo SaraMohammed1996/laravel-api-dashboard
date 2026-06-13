@@ -132,7 +132,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('0001_01_01_000001_create_cache_table', 1),
 ('0001_01_01_000002_create_jobs_table', 1),
 ('2024_01_01_000003_create_personal_access_tokens_table', 1),
-('2024_01_01_000004_create_products_table', 1)
+('2024_01_01_000004_create_products_table', 1),
+('2026_06_13_000002_add_user_id_to_products_table', 1)
 ON DUPLICATE KEY UPDATE `batch` = VALUES(`batch`);
 
 SET FOREIGN_KEY_CHECKS=1;
