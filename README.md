@@ -1,66 +1,199 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel API Dashboard
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+لوحة تحكم Laravel مع واجهة ويب و REST API لإدارة المنتجات، مع مصادقة عبر Laravel Sanctum.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## المتطلبات
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+قبل البدء، تأكد من توفر ما يلي:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| الأداة | الإصدار المطلوب |
+|--------|-----------------|
+| XAMPP | Apache + MySQL |
+| PHP | 8.2 أو أحدث |
+| Composer | 2.x |
+| Node.js | 18 أو أحدث |
+| npm | 9 أو أحدث |
 
-## Learning Laravel
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## خطوات التشغيل على XAMPP
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. تشغيل XAMPP
 
-## Laravel Sponsors
+1. افتح **XAMPP Control Panel**
+2. شغّل **Apache**
+3. شغّل **MySQL**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+### 2. إنشاء قاعدة البيانات
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. افتح المتصفح على: `http://localhost/phpmyadmin`
+2. أنشئ قاعدة بيانات جديدة باسم: `laravel_api_dashboard`
+3. اختر الترميز: `utf8mb4_unicode_ci`
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. إعداد ملف البيئة `.env`
 
-## Code of Conduct
+عدّل القيم التالية في ملف `.env`:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```env
+APP_URL=http://localhost/laravel-api-dashboard/public
 
-## Security Vulnerabilities
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_api_dashboard
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+> **ملاحظة:** كلمة مرور MySQL الافتراضية في
+### 5. تثبيت اعتماديات الواجهة وبناء الأصول
 
-## License
+```bash
+npm install
+npm run build
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> أثناء التطوير يمكنك تشغيل `npm run dev` بدلاً من `npm run build` لتحديث CSS/JS تلقائياً.
+
+---
+
+### 6. أوامر Laravel الأساسية
+
+**macOS:**
+```bash
+/Applications/XAMPP/xamppfiles/bin/php artisan key:generate
+/Applications/XAMPP/xamppfiles/bin/php artisan migrate
+/Applications/XAMPP/xamppfiles/bin/php artisan db:seed
+/Applications/XAMPP/xamppfiles/bin/php artisan storage:link
+```
+
+**Windows:**
+```cmd
+C:\xampp\php\php.exe artisan key:generate
+C:\xampp\php\php.exe artisan migrate
+C:\xampp\php\php.exe artisan db:seed
+C:\xampp\php\php.exe artisan storage:link
+```
+
+| الأمر | الوظيفة |
+|-------|---------|
+| `key:generate` | إنشاء مفتاح تشفير التطبيق |
+| `migrate` | إنشاء جداول قاعدة البيانات |
+| `db:seed` | إدخال بيانات تجريبية |
+| `storage:link` | ربط مجلد التخزين لعرض صور المنتجات |
+
+---
+
+### 7. صلاحيات المجلدات (macOS / Linux)
+
+```bash
+chmod -R 775 storage bootstrap/cache
+```
+
+---
+
+### 8. فتح التطبيق
+
+افتح المتصفح على:
+
+```
+http://localhost/laravel-api-dashboard/public
+```
+
+---
+
+## بيانات الدخول الافتراضية (بعد `db:seed`)
+
+| الحقل | القيمة |
+|-------|--------|
+| البريد الإلكتروني | `admin@example.com` |
+| كلمة المرور | `password` |
+
+> يُنشئ الـ Seeder مستخدماً واحداً و 8 منتجات مرتبطة به.
+
+---
+
+## الصفحات المتاحة (واجهة الويب)
+
+| الصفحة | الرابط |
+|--------|--------|
+| تسجيل الدخول | `/login` |
+| إنشاء حساب | `/register` |
+| لوحة التحكم | `/dashboard` |
+| المنتجات | `/products` |
+| إضافة منتج | `/products/create` |
+| الملف الشخصي | `/profile` |
+
+> كل الروابط أعلاه تُضاف بعد `/public` في عنوان XAMPP.
+
+---
+
+## REST API
+
+**Base URL:**
+```
+http://localhost/laravel-api-dashboard/public/api/v1
+```
+
+### تسجيل الدخول والحصول على Token
+
+```http
+POST /api/v1/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "password"
+}
+```
+
+استخدم قيمة `token` من الاستجابة في الطلبات المحمية:
+
+```http
+Authorization: Bearer {token}
+Accept: application/json
+```
+
+### (Endpoints)
+
+| Method | Endpoint | المصادقة |
+|--------|----------|----------|
+| POST | `/api/v1/register` | عام |
+| POST | `/api/v1/login` | عام |
+| POST | `/api/v1/logout` | Sanctum |
+| GET | `/api/v1/user` | Sanctum |
+| GET | `/api/v1/dashboard` | Sanctum |
+| GET | `/api/v1/profile` | Sanctum |
+| PUT | `/api/v1/profile` | Sanctum |
+| GET | `/api/v1/products` | Sanctum |
+| GET | `/api/v1/products?search=اسم` | Sanctum |
+| POST | `/api/v1/products` | Sanctum |
+| GET | `/api/v1/products/{id}` | Sanctum |
+| PUT | `/api/v1/products/{id}` | Sanctum |
+| DELETE | `/api/v1/products/{id}` | Sanctum |
+
+> كل مستخدم يرى ويدير **منتجاته فقط** المرتبطة بحسابه.
+
+---
+
+## التقنيات المستخدمة
+
+- Laravel 11
+- PHP 8.2+
+- MySQL
+- Laravel Sanctum
+- Tailwind CSS + Vite
+
+---
+
+## الترخيص
+
+MIT License
